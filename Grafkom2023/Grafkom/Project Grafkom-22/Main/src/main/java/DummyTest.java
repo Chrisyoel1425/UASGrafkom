@@ -25,13 +25,14 @@ public class DummyTest {
     ArrayList<Object> importX = new ArrayList<Object>();
     List<ShaderProgram.ShaderModuleData> shaderModuleDataList = Arrays.asList(
             new ShaderProgram.ShaderModuleData(
-                    "D:\\Chrome Download\\Grafkom Julix\\Grafkom Julix\\Project Grafkom-22\\Main\\resources\\shaders\\scene.vert", GL_VERTEX_SHADER),
+                    "D:\\Projek PBO\\UASGrafkom\\Grafkom2023\\Grafkom\\Project Grafkom-22\\Main\\resources\\shaders\\scene.vert", GL_VERTEX_SHADER),
             new ShaderProgram.ShaderModuleData(
-                    "D:\\Chrome Download\\Grafkom Julix\\Grafkom Julix\\Project Grafkom-22\\Main\\resources\\shaders\\scene.frag", GL_FRAGMENT_SHADER)
+                    "D:\\Projek PBO\\UASGrafkom\\Grafkom2023\\Grafkom\\Project Grafkom-22\\Main\\resources\\shaders\\scene.frag", GL_FRAGMENT_SHADER)
     );
     Model m = null;
     Model m1 = null;
     Model m2 = null;
+    Model m3 = null;
     public void run() {
         init();
         loop();
@@ -54,9 +55,10 @@ public class DummyTest {
         camera.setRotation((float) Math.toRadians(0.0f), (float) Math.toRadians(0.0f));
 
         try{
-            m = ObjLoader.loadModel(new File("D:\\Chrome Download\\Grafkom Julix\\Grafkom Julix\\Project Grafkom-22\\Main\\src\\blenderAssets\\FinalBaseMesh.obj"));
-            m1 = ObjLoader.loadModel(new File("D:\\Chrome Download\\Grafkom Julix\\Grafkom Julix\\Project Grafkom-22\\Main\\src\\blenderAssets\\street.obj"));
-            m2 = ObjLoader.loadModel(new File("D:\\Chrome Download\\Grafkom Julix\\Grafkom Julix\\Project Grafkom-22\\Main\\src\\blenderAssets\\GolfBall.obj"));
+            m = ObjLoader.loadModel(new File("D:\\Projek PBO\\UASGrafkom\\Grafkom2023\\Grafkom\\Project Grafkom-22\\Main\\src\\blenderAssets\\FinalBaseMesh.obj"));
+            m1 = ObjLoader.loadModel(new File("D:\\Projek PBO\\UASGrafkom\\Grafkom2023\\Grafkom\\Project Grafkom-22\\Main\\src\\blenderAssets\\Street.obj"));
+            m2 = ObjLoader.loadModel(new File("D:\\Projek PBO\\UASGrafkom\\Grafkom2023\\Grafkom\\Project Grafkom-22\\Main\\src\\blenderAssets\\GolfBall.obj"));
+            m3 = ObjLoader.loadModel(new File("D:\\Projek PBO\\UASGrafkom\\Grafkom2023\\Grafkom\\Project Grafkom-22\\Main\\src\\blenderAssets\\tiang.obj"));
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }catch (IOException e){
@@ -76,13 +78,13 @@ public class DummyTest {
                 15,
                 30,
                 m));
-        importX.get(0).scaleObject(0.5f, 0.5f, 0.5f);
+        importX.get(0).scaleObject(0.01f, 0.01f, 0.01f);
 
         importX.add(new Sphere(
                 shaderModuleDataList,
                 new ArrayList<>(
                 ),
-                new Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
+                new Vector4f(73/255f, 81/255f, 74/255f, 1.0f),
                 0.0,
                 new ArrayList<>(List.of(0f, 0f, 0f)),
                 4.0f,
@@ -105,7 +107,24 @@ public class DummyTest {
                 15,
                 30,
                 m2));
-        importX.get(2).translateObject(0.0f, 5f, 1.0f);
+        importX.get(2).scaleObject(0.8f, 0.8f, 0.8f);
+        importX.get(2).translateObject(-3.0f, 4.5f, -5.0f);
+
+        importX.add(new Sphere(
+                shaderModuleDataList,
+                new ArrayList<>(
+                ),
+                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
+                0.0,
+                new ArrayList<>(List.of(0f, 0f, 0f)),
+                4.0f,
+                0.1f,
+                8.0f,
+                15,
+                30,
+                m3));
+        importX.get(3).scaleObject(0.1f, 0.1f, 0.1f);
+        importX.get(3).translateObject(-3.0f, 0.0f, -5.0f);
     }
 
     public void input() {
@@ -181,7 +200,7 @@ public class DummyTest {
 
         while (window.isOpen()) {
             window.update();
-            glClearColor(1f,1f,1f, 1.0f);
+            glClearColor(0f,0f,0f, 1.0f);
             GL.createCapabilities();
             glClearDepth(1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

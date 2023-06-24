@@ -116,10 +116,13 @@ public class Sphere extends Circle3D{
 
 //        posisi PointLight
         Vector3f[] _pointLightPositions ={
-                new Vector3f(0.7f,0.2f,2.0f),
-                new Vector3f(2.3f,-3.3f,-4.0f),
-                new Vector3f(4.0f,2.0f,-12.0f),
-                new Vector3f(0.0f,0.0f,-3.0f),
+//                new Vector3f(0.7f,0.2f,2.0f),
+//                new Vector3f(2.3f,-3.3f,-4.0f),
+//                new Vector3f(4.0f,2.0f,-12.0f),
+//                new Vector3f(-5f,4.5f,-6.0f),
+                new Vector3f(-5f,5.0f,-6.0f),
+                new Vector3f(-5f,2f,-6.0f),
+//                new Vector3f(2.0f,0.0f,-6.0f),
 //                new Vector3f(5.0f, 0.0f, 5.0f)
         };
         for(int i = 0; i < _pointLightPositions.length;i++){
